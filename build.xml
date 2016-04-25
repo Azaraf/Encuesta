@@ -10,6 +10,16 @@
 <project name="Encuesta" default="default" basedir=".">
     <description>Builds, tests, and runs the project Encuesta.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="-post-jar">
+	<jar jarfile="dist/Encuesta.jar" excludes="META-INF/*">
+			<zipfileset src="${dist.jar}"/>
+			<zipfileset src="libreria.jar" excludes="META-INF/*" />
+                        <zipfileset src="mysql-connector-java-5.1.37-bin.jar" excludes="META-INF/*"/>
+			<manifest>
+				<attribute name="Main-Class" value="org.jcapiz.inspira.main.Main" />
+			</manifest>
+		</jar>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
